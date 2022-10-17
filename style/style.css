@@ -5,6 +5,7 @@
   --pink-color: #f3c7b1;
   --gray-color: #5c5c5c;
   --light-gray-color: #f2f2f1;
+  --document-bg-color: #68686850;
 }
 
 * {
@@ -19,6 +20,10 @@ body {
   height: 100vh;
   overflow: hidden;
   background-color: var(--light-gray-color);
+}
+
+dialog {
+  border: 0;
 }
 
 li {
@@ -100,4 +105,28 @@ footer {
   text-align: center;
   color: var(--gray-color);
   background-color: var(--green-color);
+}
+
+/* -- Dialog -- */
+.dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  background-color: var(--document-bg-color);
+}
+
+.dialog__container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.4em;
+  width: 32em;
+  background: var(--white-color);
+  border-radius: 0.5rem;
 }
