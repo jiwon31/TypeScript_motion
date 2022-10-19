@@ -15,6 +15,7 @@ interface SectionContainer extends Component, Composable {
   setOnDragStateListener(listener: OnDragStateListener<SectionContainer>): void;
   muteChildren(state: "mute" | "unmute"): void;
   getBoundingRect(): DOMRect;
+  onDropped(): void;
 }
 
 type SectionContainerConstructor = {
@@ -65,10 +66,16 @@ export class PageItemComponent
 
   private onDragEnter(_: DragEvent) {
     this.notifyDragObserver("enter");
+    this.element.classList.add("drop-area");
   }
 
   private onDragLeave(_: DragEvent) {
     this.notifyDragObserver("leave");
+    this.element.classList.remove("drop-area");
+  }
+
+  onDropped(): void {
+    this.element.classList.remove("drop-area");
   }
 
   private notifyDragObserver(state: DragState) {
@@ -140,6 +147,7 @@ export class PageComponent
         dropY < srcElement.y ? "beforebegin" : "afterend"
       );
     }
+    this.dropTarget.onDropped();
   }
 
   addChild(section: Component) {
