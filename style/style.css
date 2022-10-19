@@ -236,3 +236,9 @@ footer {
 .todo-label {
   padding: 1em;
 }
+
+/* -- Drag and Drop -- */
+/* mute-children 안에 있는 모든 태그들의 포인터 이벤트를 none으로 설정 => 하지만 클래스 다음에 모든 태그를 선택하는 건 썩 좋지 않다. */
+.mute-children * {
+  pointer-events: none;
+}
